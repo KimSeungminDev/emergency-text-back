@@ -13,6 +13,7 @@ public class EmergencyTextBackApplication {
         Dotenv dotenv = Dotenv.configure().load();
 
         // Set system properties for Spring Boot to read
+        System.setProperty("SPRING_APP_URL", dotenv.get("SPRING_APP_URL"));
         System.setProperty("RDS_ENDPOINT", dotenv.get("RDS_ENDPOINT"));
         System.setProperty("DB_HOST", dotenv.get("DB_HOST"));
         System.setProperty("DB_PORT", dotenv.get("DB_PORT"));
