@@ -13,15 +13,15 @@ public class EmergencyTextBackApplication {
         Dotenv dotenv = Dotenv.configure().load();
 
         // Set system properties for Spring Boot to read
-        System.setProperty("SPRING_APP_URL", dotenv.get("SPRING_APP_URL"));
         System.setProperty("RDS_ENDPOINT", dotenv.get("RDS_ENDPOINT"));
-        System.setProperty("DB_HOST", dotenv.get("DB_HOST"));
         System.setProperty("DB_PORT", dotenv.get("DB_PORT"));
         System.setProperty("DB_NAME", dotenv.get("DB_NAME"));
         System.setProperty("DB_USER", dotenv.get("DB_USER"));
         System.setProperty("DB_PASSWORD", dotenv.get("DB_PASSWORD"));
-        System.setProperty("API_URL", dotenv.get("API_URL"));
         System.setProperty("API_KEY", dotenv.get("API_KEY"));
+        System.setProperty("spring.datasource.url", dotenv.get("DB_HOST"));
+        System.setProperty("external.api.url", dotenv.get("API_URL"));
+        System.setProperty("spring.app.url", dotenv.get("SPRING_APP_URL"));
 
         SpringApplication.run(EmergencyTextBackApplication.class, args);
     }

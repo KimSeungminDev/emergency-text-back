@@ -13,7 +13,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")  // 모든 엔드포인트에 대해 CORS 허용
-                .allowedOrigins(springAppUrl) // 환경 변수로 설정된 값
+                .allowedOrigins(springAppUrl+":3000") // 환경 변수로 설정된 값
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // 허용할 HTTP 메서드
                 .allowedHeaders("*") // 허용할 헤더
                 .allowCredentials(true); // 자격증명 포함 요청 허용
