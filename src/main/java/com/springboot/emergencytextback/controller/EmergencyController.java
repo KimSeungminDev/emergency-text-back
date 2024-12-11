@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "${spring.app.url}:80")  // .env에서 값을 읽어서 CORS 허용
+@CrossOrigin(origins = "${spring.app.url}:3000")  // .env에서 값을 읽어서 CORS 허용
 @RequestMapping("/text")
 public class EmergencyController {
 
