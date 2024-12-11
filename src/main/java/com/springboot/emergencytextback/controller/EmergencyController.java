@@ -2,18 +2,22 @@ package com.springboot.emergencytextback.controller;
 
 import com.springboot.emergencytextback.entity.Emergency;
 import com.springboot.emergencytextback.service.EmergencyService;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")  // 프론트엔드가 동작하는 주소를 설정
+@CrossOrigin(origins = "${spring.app.url}:80")  // .env에서 값을 읽어서 CORS 허용
 @RequestMapping("/text")
 public class EmergencyController {
 
     private final EmergencyService emergencyService;
+
+    // .env에서 값 읽어오기
+    @Value("${spring.app.url}")
+    private String springAppUrl;
 
     public EmergencyController(EmergencyService emergencyService) {
         this.emergencyService = emergencyService;
@@ -34,6 +38,7 @@ public class EmergencyController {
             String sessionName = searchTerm + "-" + searchTime;
 
             session.setAttribute("sessionName", sessionName);
+            System.out.println(springAppUrl);
         }
 
         return emergencyService.fetchMessages(region, message); // 서비스 호출
